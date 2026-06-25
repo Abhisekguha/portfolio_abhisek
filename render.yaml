@@ -1,0 +1,20 @@
+# Render Blueprint — Deploy Portfolio Next.js App
+# https://render.com/docs/blueprint-spec
+
+services:
+  # ── Next.js Web Service (frontend + API routes) ──
+  - type: web
+    name: portfolio-web
+    env: node
+    region: singapore
+    plan: free
+    buildCommand: npm run build
+    startCommand: npm start
+    healthCheckPath: /
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: OPENROUTER_API_KEY
+        sync: false  # Set this manually in Render dashboard
+      - key: OPENROUTER_MODEL
+        value: openrouter/auto
